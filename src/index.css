@@ -1,0 +1,691 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Century Gothic", Futura, sans-serif;
+  background: url(../src/images/background.jpg);
+  overflow-x: hidden;
+}
+
+button {
+  font-size: 4vw;
+  font-family: "Century Gothic", Futura, sans-serif;
+}
+
+.page {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  overflow: hidden;
+}
+
+.restart-btn {
+  top: 10px;
+  left: 10px;
+  padding: 1em;
+  background: #b67658;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.restart-btn:hover {
+  background: #d49375;
+}
+
+.dark-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.884);
+  z-index: 1;
+}
+
+.menu {
+  width: 80%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #c1d8da;
+  border-radius: 20px;
+}
+
+.menu button {
+  width: 100%;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  font-size: 6vw;
+  font-weight: 600;
+  color: white;
+  background: #437275;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.menu button:hover {
+  background: #315c5f;
+}
+
+.menu .instructions {
+  color: #02181b;
+  font-size: 4vw;
+  font-weight: 500;
+}
+
+.menu .instructions span {
+  color: #58989e;
+}
+
+.choose-player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: none;
+  gap: 1em;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2em;
+  border-radius: 20px;
+  background: #c1d8da;
+  color: white;
+  text-align: center;
+}
+
+.choose-player h2 {
+  font-weight: 500;
+  font-size: 6vw;
+  color: #032325;
+}
+
+.choose-first-player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  height: 100%;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+
+.choose-first-player button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vw;
+  width: 30vw;
+  border: none;
+  font-family: "Century Gothic", Futura, sans-serif;
+  font-size: 10vw;
+  background: #437275;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.choose-first-player button:hover {
+  background: #315c5f;
+}
+
+.first-player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.first-player h2 {
+  font-size: 10vw;
+}
+
+.scores {
+  padding: 1em 2em;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.5)
+  );
+  border-radius: 0 0 20px 20px;
+  backdrop-filter: blur(40px);
+  box-shadow: 5px 5px 20px rgba(2, 37, 39, 0.63);
+  font-size: 5vw;
+  font-weight: 500;
+  color: #aa5b36;
+  text-align: center;
+}
+
+.scores .round {
+  font-size: 4vw;
+  font-weight: 600;
+  color: #3a2b25;
+  text-align: center;
+}
+
+.scores span {
+  font-size: 5vw;
+  font-weight: 600;
+  color: #3a2b25;
+}
+
+.game {
+  flex: 1;
+  width: 90vw;
+  padding: 1em 2em;
+  margin-bottom: 2em;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.5)
+  );
+  border-radius: 20px;
+  backdrop-filter: blur(40px);
+  box-shadow: 5px 5px 20px rgba(2, 37, 39, 0.63);
+  overflow: auto;
+  font-size: 4vw;
+}
+
+.game-board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: min-content;
+  margin: 2em 0;
+}
+
+.game-finished {
+  background: linear-gradient(
+    to bottom right,
+    rgb(1, 23, 24),
+    rgba(3, 43, 44, 0.8)
+  );
+  color: white;
+}
+
+.game-finished button,
+.game-finished .status {
+  color: white;
+}
+
+ol,
+ul {
+  text-align: center;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.game-info {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 1em;
+}
+
+.status-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+}
+
+.status,
+.title {
+  margin-bottom: 0.5em;
+  font-size: 4vw;
+  font-weight: 600;
+  color: #27201d;
+}
+
+.game-finished .title {
+  color: white;
+}
+
+.status span {
+  font-size: 5vw;
+  font-weight: 600;
+  color: #5e4c45;
+}
+
+.winner {
+  display: block;
+  font-size: 7vw;
+  font-weight: 600;
+  color: #aa5b36;
+}
+
+.nextround-btn {
+  width: 100%;
+  padding: 1em;
+  margin-bottom: 2em;
+  background: #ac7258;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.nextround-btn:hover {
+  background: #ca9982;
+}
+
+.game-history {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sort-btn {
+  padding: 0.5em 1em;
+  background: #ac7258;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.sort-btn span {
+  font-size: 3vw;
+}
+
+.sort-btn:hover {
+  background: #ca9982;
+}
+
+.history-list {
+  height: 100%;
+  overflow: auto;
+}
+
+.list-btn {
+  padding: 0.5em 1em;
+  margin-bottom: 0.5em;
+  background: rgba(57, 101, 105, 0.6);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-family: "Century Gothic", Futura, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.game-finished .list-btn {
+  background: rgba(91, 161, 167, 0.6);
+}
+
+.list-btn:hover {
+  background: rgba(56, 110, 114, 0.8);
+}
+
+.selected-list-btn {
+  background: rgba(97, 176, 180, 0.85);
+  font-weight: 600;
+}
+
+.selected-list-btn:hover {
+  background: rgba(97, 176, 180, 0.85);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 2vw;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1bb;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(5, 22, 24);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(17, 83, 87);
+}
+
+@media screen and (min-width: 320px) {
+  button {
+    font-size: 3vw;
+  }
+
+  .menu .instructions {
+    font-size: 3.5vw;
+  }
+
+  .scores {
+    font-size: 3.5vw;
+  }
+
+  .scores .round {
+    font-size: 3.5vw;
+  }
+
+  .scores span {
+    font-size: 5vw;
+  }
+
+  .restart-btn {
+    position: absolute;
+  }
+
+  .game {
+    font-size: 1rem;
+  }
+
+  .status,
+  .title {
+    font-size: 3.5vw;
+  }
+
+  .status span {
+    font-size: 4.5vw;
+  }
+
+  .winner {
+    font-size: 5.5vw;
+  }
+
+  .sort-btn span {
+    font-size: 2.5vw;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  button {
+    font-size: 0.9rem;
+  }
+
+  .menu button {
+    font-size: 5vw;
+  }
+
+  .menu .instructions {
+    font-size: 2.5vw;
+  }
+
+  .choose-player h2 {
+    font-size: 4vw;
+  }
+
+  .choose-first-player button {
+    height: 25vw;
+    width: 25vw;
+    font-size: 10vw;
+  }
+
+  .first-player {
+    padding: 0 1em;
+  }
+
+  .first-player h2 {
+    font-size: 7vw;
+  }
+
+  .scores {
+    font-size: 1rem;
+  }
+
+  .scores .round {
+    font-size: 1.2rem;
+  }
+
+  .scores span {
+    font-size: 2rem;
+  }
+
+  .status,
+  .title {
+    font-size: 2.5vw;
+  }
+
+  .status span {
+    font-size: 3vw;
+  }
+
+  .winner {
+    font-size: 4vw;
+  }
+
+  .sort-btn {
+    padding: 1em;
+  }
+
+  .sort-btn span {
+    font-size: 0.7rem;
+  }
+
+  .list-btn {
+    padding: 1em 2em;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .page {
+    justify-content: center;
+  }
+
+  .scores {
+    margin-bottom: auto;
+  }
+
+  .menu {
+    width: 60%;
+  }
+
+  .menu button {
+    font-size: 4vw;
+  }
+
+  .menu .instructions {
+    font-size: 2vw;
+  }
+
+  .choose-player {
+    padding: 5em;
+  }
+
+  .choose-player h2 {
+    font-size: 3vw;
+  }
+
+  .choose-first-player button {
+    height: 15vw;
+    width: 15vw;
+    font-size: 7vw;
+  }
+
+  .game {
+    flex: unset;
+    width: max-content;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2em;
+    margin: 0;
+    margin-bottom: auto;
+    padding: 4em;
+    overflow: hidden;
+  }
+
+  .game-board {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .game-info {
+    height: 50vw;
+    gap: 2em;
+    overflow: hidden;
+  }
+
+  .status,
+  .title {
+    font-size: 1rem;
+  }
+
+  .status span {
+    font-size: 1.2rem;
+  }
+
+  .winner {
+    font-size: 1.7rem;
+  }
+
+  .game-history {
+    flex-direction: column;
+    align-items: unset;
+  }
+
+  .sort-btn {
+    align-self: flex-end;
+  }
+
+  .history-list {
+    padding-right: 5px;
+  }
+
+  ol,
+  ul {
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .menu {
+    width: 50%;
+  }
+
+  .menu button {
+    font-size: 3vw;
+  }
+
+  .menu .instructions {
+    font-size: 1.5vw;
+  }
+
+  .choose-player h2 {
+    font-size: 2vw;
+  }
+
+  .choose-first-player button {
+    height: 10vw;
+    width: 10vw;
+    font-size: 5vw;
+  }
+
+  .first-player h2 {
+    font-size: 5vw;
+  }
+
+  .game {
+    width: max-content;
+    gap: 3em;
+    padding: 5em;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .menu {
+    width: 40%;
+  }
+
+  .menu button {
+    font-size: 2vw;
+  }
+
+  .menu .instructions {
+    font-size: 1.2vw;
+  }
+
+  .choose-player h2 {
+    font-size: 1.7vw;
+  }
+
+  .choose-first-player button {
+    height: 9vw;
+    width: 9vw;
+    font-size: 3vw;
+  }
+
+  .first-player h2 {
+    font-size: 3vw;
+  }
+
+  .game-info {
+    height: 35em;
+  }
+}
+
+@media screen and (min-width: 1201px) and (max-height: 800px) {
+  .game {
+    height: 100%;
+    align-items: unset;
+    padding: 2em 5em;
+    margin-bottom: 2em;
+  }
+
+  .game-info {
+    height: 100%;
+  }
+
+  .status,
+  .title {
+    font-size: 3vh;
+  }
+
+  button {
+    font-size: 2vh;
+  }
+
+  .sort-btn span {
+    font-size: 1.5vh;
+  }
+}

@@ -1,0 +1,60 @@
+.square {
+  background: transparent;
+  border: 2px solid #a88b7e;
+  float: left;
+  font-size: 10vw;
+  font-weight: 500;
+  line-height: 34px;
+  width: 20vw;
+  height: 20vw;
+  max-width: 200px;
+  max-height: 200px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  color: #2b2320;
+}
+
+.square:hover {
+  background: #67a9ac3d;
+  cursor: pointer;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.winner-square {
+  background: #528488;
+}
+
+.winner-square:hover {
+  background: #528488;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+@media screen and (min-width: 769px) {
+  .square {
+    width: 15vw;
+    height: 15vw;
+    font-size: 7vw;
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .square {
+    font-size: 5rem;
+  }
+}
+
+@media screen and (min-width: 1201px) and (max-height: 800px) {
+  .square {
+    width: 15vh;
+    height: 15vh;
+    font-size: 5vh;
+  }
+}
