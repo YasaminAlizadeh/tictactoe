@@ -2,6 +2,8 @@
 
 This is a simple Tic Tac Toe game made using React JS. The game is played between a human player and a computer opponent, and the application is designed to make it challenging to win as it knows the moves and tries to win every round. The winner of each round gets to start the next round, and the game keeps track of each player's scores. Additionally, the game features a move history that allows you to view the game board's state at any point, and a restart button to start a new game.
 
+You can play the game online by visiting [this link](https://yasaminalizadeh.github.io/tictactoe/).
+
 ![image](https://user-images.githubusercontent.com/68509830/230792533-7a774b31-ab29-4016-a2ce-1e1d4dee3540.png)
 ![image](https://user-images.githubusercontent.com/68509830/230792438-45454a1e-3e09-48fb-ac29-a706573797f1.png)
 ![image](https://user-images.githubusercontent.com/68509830/230792409-85229b80-00a3-41a8-b297-65cf11b08c98.png)
