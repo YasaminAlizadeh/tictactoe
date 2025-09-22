@@ -1,41 +1,72 @@
-# Tic Tac Toe Game using React JS
+# AI Tic-Tac-Toe Game with React 🤖
 
-This is a simple Tic Tac Toe game made using React JS. The game is played between a human player and a computer opponent, and the application is designed to make it challenging to win as it knows the moves and tries to win every round. The winner of each round gets to start the next round, and the game keeps track of each player's scores. Additionally, the game features a move history that allows you to view the game board's state at any point, and a restart button to start a new game.
-
-You can play the game online by visiting [this link](https://yasaminalizadeh.github.io/tictactoe/).
+A classic Tic-Tac-Toe game built with **React**, where you can play against a surprisingly challenging computer opponent. This project was created as an extension of the official React tutorial, enhancing it with more complex state management, an AI opponent, and additional features like a score tracker and move history.
 
 ![image](https://user-images.githubusercontent.com/68509830/230792533-7a774b31-ab29-4016-a2ce-1e1d4dee3540.png)
 ![image](https://user-images.githubusercontent.com/68509830/230792438-45454a1e-3e09-48fb-ac29-a706573797f1.png)
 ![image](https://user-images.githubusercontent.com/68509830/230792409-85229b80-00a3-41a8-b297-65cf11b08c98.png)
 
-## Installation
+## ✨ What is This?
 
-To run the Tic Tac Toe game, follow these steps:
+This project is a fully functional Tic-Tac-Toe game where a human player can compete against an AI. The game logic is built using React's class components and state management. The AI isn't just random; it follows a simple algorithm to make strategic moves, making the game more engaging.
 
-1. Clone the repository to your local machine.
-2. Open the terminal and navigate to the project directory.
-3. Run `npm install` to install the required dependencies.
-4. Run `npm start` to start the development server.
-5. Open your browser and go to `http://localhost:3000` to play the game.
+I built this to solidify my understanding of React's core concepts, such as state, props, and component lifecycle methods, while also practicing algorithmic thinking for the AI opponent.
 
-## How to Play
+### Core Features
 
-1. The game is played between two players, X and O.
-2. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins the game.
-3. The game ends in a draw if all the squares are filled and no player has won.
-4. The player who wins each round gets to start the next round.
-5. You can view the move history and select any move to see the game board's state at that point.
-6. There is a restart button to start a new game.
+* **🧠 Smart AI Opponent:** Play against a computer that makes strategic moves. The AI will:
+    1.  Win if it has two in a row.
+    2.  Block the player if they have two in arow.
+    3.  Otherwise, make a random move.
+* **📝 Move History & Time Travel:** A list of all moves is recorded. Players can click on any move in the history to go back and review the state of the board at that point in the game.
+* **📊 Round & Score Tracking:** The game keeps track of the score between you and the AI across multiple rounds. The winner of a round gets to start the next one.
+* **🎲 Randomized Start:** At the beginning of the first round (and after a tie), the starting player (Human or AI) is chosen randomly.
+* **🎨 Custom CSS & Animations:** The game features custom styling and a CSS-animated countdown to add a bit of flair before the game starts.
 
-## Scores
+---
 
-The game keeps track of each player's scores. The player who wins each round gets one point, and the player with the most points at the end of the game wins.
+## 🔧 Tech Stack & Architecture
 
-## Technologies Used
+This project was built using Create React App and focuses on React's class-based component architecture.
 
-- React JS (Class Components)
-- CSS
+* **Core Library:** **React**
+* **Language:** **JavaScript (ES6+)**
+* **Styling:** **CSS** with custom animations.
 
-## Credits
+### Architectural Highlights
 
-This game was created by Yasamin Alizadeh. If you have any questions or feedback, please feel free to contact me at itsYasaminAlizadeh@gmail.com.
+1.  **Stateful Game Logic in a Class Component (`Game.js`)**
+    The entire game's state—including the board history, scores, current player, and AI logic—is managed within a single `Game` class component. This centralized approach makes it easy to control the flow of the game and pass data down to child components via props.
+
+2.  **AI Opponent Algorithm (`componentDidUpdate`)**
+    The AI's logic is implemented within the `componentDidUpdate` lifecycle method. After the human player makes a move, `componentDidUpdate` is triggered. It checks if it's the AI's turn and then runs through a series of checks:
+    * First, it iterates through all possible winning lines to see if it can win in the current turn.
+    * If it can't win, it iterates again to see if the human player is about to win, and if so, it blocks them.
+    * If neither condition is met, it selects a random empty square.
+
+3.  **"Time Travel" with State History**
+    The game state is stored as a `history` array, where each element is an object representing the state of the `squares` at a particular move. The "time travel" feature works by simply updating the `stepNumber` in the state, which causes the `Board` component to re-render with the squares from that point in history.
+
+---
+
+## 🏃‍♂️ Running Locally
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/YasaminAlizadeh/tictactoe.git
+    cd tictactoe
+    ```
+
+2.  **Install dependencies:**
+    * The `package.json` file was not included in the source, but this project was bootstrapped with `create-react-app`. You can install the necessary dependencies by running:
+    ```bash
+    npm install react react-dom react-scripts
+    ```
+
+3.  **Run the development server:**
+    ```bash
+    npm start
+    ```
+
+The application will be available at `http://localhost:3000`.
+
